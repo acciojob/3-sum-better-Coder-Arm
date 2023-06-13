@@ -2,14 +2,31 @@ function threeSum(arr, target) {
 // write your code here
 	let n = arr.length; 
 	let minDiff = Number.MAX_SAFE_INTEGER;
-	let sum = 0;
+	let closestSum = 0;
 	for(let i = 0; i < n-2; i++){
-		sum = arr[i]+arr[i+1]+arr[i+2];
-		if(Math.abs(sum-target) < minDiff){
-			minDiff = Math.abs(sum-target);
+		let j  = i+1;
+		let k = n-1;
+		while(j < k){
+		let sum = arr[i]+arr[j]+arr[k];
+		if(sum === target) return target;
+		else if(sum < target){
+			if(target - sum < minDiff){
+				minDiff = target-sum;
+				closestSum = sum;
+			}
+			j++;
+		}
+			else{
+				if(sum - target < minDiff){
+                 minDiff = sum-target;
+				 closestSum = sum;	
+				}
+				k--;
+			}
+		
 		}
 	}
-  return target + minDiff;
+  return closestSum;
 }
 
 module.exports = threeSum;
