@@ -1,5 +1,6 @@
 function threeSum(arr, target) {
 // write your code here
+	arr.sort((a,b) => a-b);
 	let n = arr.length; 
 	let minDiff = Number.MAX_SAFE_INTEGER;
 	let closestSum = 0;
